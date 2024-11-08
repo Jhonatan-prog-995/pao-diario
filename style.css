@@ -6,20 +6,44 @@ body {
 header{
     display: flex;
     justify-content: center;
+    background: linear-gradient(to right, #FFD700, #FF7F50, #FF4500);
+
+
+}
+header img{
+    width: 20%;
 }
 
-ul{
-    list-style: none;
-    display: flex;
-    justify-content: space-evenly;
+img{
+    border-top-left-radius: 0;     
+    border-top-right-radius: 20px;    
+    border-bottom-right-radius: 20px; 
+    border-bottom-left-radius: 0;
 }
 
 nav{
-    height: 50px;
+    display: flex;
     width: 80%;
+    justify-content: center;
+    align-items: center;
     
 }
+ul {
+    height: 100%;
+    list-style: none;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    gap: 20%;
+}
 
-header img{
-    width: 20%;
+ul li a {
+    font-size: 50px;
+    list-style: none;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-family: Arial;
 }
