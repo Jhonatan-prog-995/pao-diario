@@ -28,6 +28,7 @@ nav{
     align-items: center;
     
 }
+
 ul {
     height: 100%;
     list-style: none;
@@ -41,9 +42,19 @@ ul {
 
 ul li a {
     font-size: 50px;
-    list-style: none;
     text-decoration: none;
     color: black;
     font-weight: bold;
     font-family: Arial;
+    padding: 8px; 
+    border-radius: 4rem; 
+    border: 1px solid transparent; 
+    box-sizing: border-box; 
+    transition: all 0.6s ease; 
+}
+
+ul li a:hover {
+    border: 1px solid #333333;
+    background-color:  #8B4513;
+    color: burlywood;
 }
