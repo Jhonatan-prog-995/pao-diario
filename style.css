@@ -58,3 +58,24 @@ ul li a:hover {
     background-color:  #8B4513;
     color: burlywood;
 }
+
+#devocional{
+    display: flex;
+}
+
+.devocional-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.devocional-item h2 {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.devocional-item p {
+    font-size: 1.2em;
+    color: #666;
+}

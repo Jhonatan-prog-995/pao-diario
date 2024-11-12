@@ -1,0 +1,31 @@
+[
+    {
+        "id": 1,
+        "titulo": "Jesus é a Esperança",
+        "body": "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna.",
+        "img": null
+    },
+
+    {
+        "id": 2,
+        "titulo": "A Luz do Mundo",
+        "body": "Eu sou a luz do mundo; quem me segue não andará em trevas, mas terá a luz da vida.",
+        "img": null
+    },
+
+    {
+        "id": 3,
+        "titulo": "Celebrai",
+        "body": "Celebrai com júbilo ao SENHOR, todas as terras.",
+        "img": null
+    },
+
+    {
+        "id": 4,
+        "titulo": "Os planos de Deus",
+        "body": "Porque sou eu que conheço os planos que tenho para vocês, \"diz o Senhor\", planos de fazê-los prosperar e não de lhes causar dano, planos de dar-lhes esperança e um futuro.",
+        "img": null
+    }
+
+
+]
