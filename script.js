@@ -11,7 +11,7 @@ fetch('dados.json')
         devocionalContainer.innerHTML += `
             <div class="devocional-item">
                 <h2>${devocional.titulo}</h2>
-                <p>${devocional.body}</p>
+                <p>${devocional.body} <br/><br/> ${devocional.cap}</p>
                 ${devocional.img ? `<img src="${devocional.img}" alt="Imagem Devocional">` : ''}
             </div>    
         
