@@ -4,9 +4,15 @@ body {
     background: linear-gradient(to right, #3e2723, #795548, #a1887f);
   }
 
+.cabecalho{
+    display: flex;
+    margin: 0 5rem;
+}
+
 header{
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 header img{
@@ -29,15 +35,14 @@ nav{
 }
 
 ul {
-    height: 100%;
     list-style: none;
     display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    gap: 20%;
+    width: 80%; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 0;
+    margin: 0;
 }
-
 ul li a {
     font-size: 50px;
     text-decoration: none;
@@ -86,90 +91,6 @@ ul li a:hover {
 
 
 /* ____________________________________________ */
-/* especionar */
-
-/* Estilos para telas até 1024px (tablets e dispositivos com telas médias) */
-@media screen and (max-width: 1620px) {
-    body {
-        background: linear-gradient(to right, #3e2723, #795548, #a1887f);  /* Muda a cor do fundo para telas menores */
-    }
-
-    header {
-        background: linear-gradient(to right, #3e2723, #795548, #a1887f);
-
-    }
-    nav{
-        width: 80%;
-    }
-    header img{
-        width: 20%;
-        margin-left: 80px;
-    }
-
-    ul {
-        height: 100%;
-        list-style: none;
-        display: flex;
-        width: 50%;
-        justify-content: center;
-        align-items: center;
-        gap: 20%;
-    }
-    ul li a {
-        font-size: 1.5rem;
-        text-decoration: none;
-        color: black;
-        font-weight: bold;
-        font-family: Arial, sans-serif;
-        padding: 8px; 
-        border-radius: 4rem;
-        transition: all 0.6s ease;
-        outline: none;
-    }
-}
-
-/* Estilos para telas até 768px (telas de tablets em modo retrato ou smartphones maiores) */
-@media screen and (max-width: 768px) {
-    body {
-        background: #e0e0e0;  /* Mudança de fundo para dispositivos móveis */
-    }
-
-    header {
-        padding: 10px;
-        background-color: #d0d0d0;  /* Ajuste de fundo para cabeçalho */
-    }
-
-    /* Outras regras específicas para telas pequenas */
-    .content {
-        padding: 10px;  /* Adicionando um padding pequeno no conteúdo */
-    }
-}
-
-/* Estilos para telas até 480px (smartphones em modo retrato) */
-@media screen and (max-width: 480px) {
-    body {
-        background: #ccc;  /* Alteração de cor de fundo para dispositivos muito pequenos */
-    }
-
-    header {
-        padding: 8px;
-        background-color: #b0b0b0;
-    }
-
-    .content {
-        padding: 8px;
-    }
-
-    h1 {
-        font-size: 1.5em;  /* Ajuste do tamanho da fonte para cabeçalhos */
-    }
-
-    p {
-        font-size: 1em;  /* Ajuste da fonte para texto */
-    }
-}
+/* RESPONSIVO */
 
 
-
-
-  
