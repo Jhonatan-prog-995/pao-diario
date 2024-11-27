@@ -21,3 +21,51 @@ fetch('dados.json')
 })
 
 .catch(error => console.error('Erro ao carregar o JSON:', error));
+
+
+// ____________________________________________
+
+const headerPath = '../header/header.html';
+
+async function loadHeader(){
+    try{
+        const response = await fetch(headerPath);
+        if(!response.ok) throw new Error('Error ao carregar a pagina');
+
+
+        const headerHtml = await response.text();
+
+        document.getElementById('header').innerHTML = headerHtml;
+    } catch (error) {
+        console.error('Erro:', error);
+      }
+}
+
+loadHeader();
+
+
+
+
+// ______________________________________________
+
+
+const footerPath = '../footer/footer.html';
+
+
+async function loadFoot() {
+
+    try{
+        const response = await fetch(footerPath);
+        if(!response.ok) throw new Error('Error ao carregar a pagina');
+
+        const footerHtml = await response.text();
+
+        document.getElementById('footer').innerHTML = footerHtml;
+    } catch (error) {
+        console.error('Erro:' , error);
+    }
+    
+}
+
+
+loadFoot()

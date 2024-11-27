@@ -5,6 +5,7 @@ body {
   }
 
 .cabecalho{
+    width: 100%;
     display: flex;
     margin: 0 5rem;
 }
@@ -90,6 +91,28 @@ ul li a:hover {
 }
 
 
+
+footer{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.footer{
+    width: 100%;
+    margin: 0 5rem;
+}
+
+.footer h2{
+    color: aqua;
+    font-size: 2.5rem;
+}
+.footer p{
+    color: aquamarine;
+    font-size: 1.5rem;
+}
+.footer span{
+    color:chartreuse
+}
 /* ____________________________________________ */
 /* RESPONSIVO */
 
