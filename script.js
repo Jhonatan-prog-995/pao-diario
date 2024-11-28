@@ -100,7 +100,7 @@ document.getElementById('bible-form').addEventListener('submit', async (event) =
     } catch (error) {
         alert('Erro: ' + error.message);
     }
+
+    
 });
-
-
 
