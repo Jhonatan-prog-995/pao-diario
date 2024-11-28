@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Biblia</title>
+</head>
+<body>
+
+    <div id="header"></div>
+
+    <section>
+        <div class="biblia">
+            <form id="bible-form">
+                <label for="book">Livro:</label>
+                <input type="text" id="book" placeholder="Livro" required>
+    
+                <label for="chapter">Capítulo:</label>
+                <input type="number" id="chapter" placeholder="Capitulo" required>
+    
+                <label for="verse">Versículo:</label>
+                <input type="text" id="verse" placeholder="Versículo" required>
+    
+                <button type="submit">Buscar</button>
+        
+        
+            </form>
+
+            <div id="result"></div>
+    
+        </div>
+
+    </section>
+
+    <div id="footer"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -4,6 +4,12 @@ body {
     background: linear-gradient(to right, #3e2723, #795548, #a1887f);
   }
 
+  section{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
 .cabecalho{
     width: 100%;
     display: flex;
@@ -90,6 +96,11 @@ ul li a:hover {
     color: #fff;
 }
 
+.biblia{
+    width: 100%;
+    background: #fff;
+    margin: 0 5rem;
+}
 
 
 footer{

@@ -23,6 +23,8 @@ fetch('dados.json')
 .catch(error => console.error('Erro ao carregar o JSON:', error));
 
 
+
+
 // ____________________________________________
 
 const headerPath = '../header/header.html';
@@ -69,3 +71,36 @@ async function loadFoot() {
 
 
 loadFoot()
+
+
+
+document.getElementById('bible-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const book = document.getElementById('book').value;
+    const chapter = document.getElementById('chapter').value;
+    const verse = document.getElementById('verse').value;
+
+    const url = `https://bible-api.com/${book}+${chapter}:${verse}?translation=almeida`;
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Erro ao buscar o versículo');
+        }
+
+        const data = await response.json();
+
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = `
+            <h2>${data.reference}</h2>
+            <p>${data.text}</p>
+            <small>Tradução: ${data.translation_name}</small>
+        `;
+    } catch (error) {
+        alert('Erro: ' + error.message);
+    }
+});
+
+
+
