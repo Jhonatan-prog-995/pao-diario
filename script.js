@@ -122,9 +122,27 @@ document.addEventListener("DOMContentLoaded", function () {
                 resultDiv.innerHTML = `<p>Erro: ${data.error}</p>`;
             } else {
                 resultDiv.innerHTML = '';  // Limpar conteúdo anterior
+
                 data.verses.forEach((verseData) => {
                     const verseElement = document.createElement('p');
-                    verseElement.textContent = `${verseData.verse} ${verseData.text}`; // Número do versículo + texto
+                    
+                    // Criar o span para o número do versículo
+                    const verseNumber = document.createElement('span');
+                    verseNumber.textContent = `${verseData.verse} `;
+                    verseNumber.style.color = 'red'; // Cor do número do versículo (por exemplo, vermelho)
+                    verseNumber.style.fontSize = '24px';
+                    
+                    // Criar o span para o texto do versículo
+                    const verseText = document.createElement('span');
+                    verseText.textContent = verseData.text;
+                    verseText.style.color = 'blue'; // Cor do texto do versículo (por exemplo, azul)
+                    verseText.style.fontSize = '20px'
+                    
+                    // Adicionar os spans ao elemento p
+                    verseElement.appendChild(verseNumber);
+                    verseElement.appendChild(verseText);
+                    
+                    // Adicionar o p ao resultDiv
                     resultDiv.appendChild(verseElement);
                 });
             }

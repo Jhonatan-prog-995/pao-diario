@@ -103,6 +103,23 @@ ul li a:hover {
     min-height: 500px;
 }
 
+/* Remove as setas (up/down) em todos os navegadores */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Para Firefox */
+}
+
+/* Caso o campo seja de texto e o navegador tenha setas de autocompletar ou sugestões */
+input[type="text"] {
+  -webkit-appearance: none; /* Remove qualquer aparência de setas em alguns navegadores */
+}
+
+
 
 footer{
     display: flex;
