@@ -74,54 +74,6 @@ loadFoot()
 
 
 
-
-
-
-document.getElementById('bible-form').addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    const book = document.getElementById('book').value;
-    const chapter = document.getElementById('chapter').value;
-    const verse = document.getElementById('verse').value;
-
-    
-    let url = `https://bible-api.com/${book}+${chapter}`;
-    if (verse) {
-        url += `:${verse}`;
-    }
-    url += `?translation=almeida`;
-
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error('Erro ao buscar o versículo');
-        }
-
-        const data = await response.json();
-
-        const resultDiv = document.getElementById('result');
-        resultDiv.innerHTML = ' ';
-
-        if (data.error) { 
-            resultDiv.textContent = `Erro: ${data.error}`;
-        } else {
-            data.verses.forEach((verse) => {
-                const verseElement = document.createElement('p');
-                verseElement.textContent = `${verse.verse} ${verse.text}`; // Número do versículo + texto
-                resultDiv.appendChild(verseElement);
-            });
-        }
-    } catch (error) {
-        console.error('Erro ao buscar dados:', error);
-        const resultDiv = document.getElementById('result');
-        resultDiv.textContent = 'Erro ao buscar dados da API.';
-    }
-});
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById('bible-form');
     const resultDiv = document.getElementById('result');
@@ -139,36 +91,45 @@ document.addEventListener("DOMContentLoaded", function () {
         searchVerse(savedBook, savedChapter, savedVerse);
     }
 
-    form.addEventListener('submit', function (e) {
+    // Ouvinte do formulário para busca do versículo
+    form.addEventListener('submit', async function (e) {
         e.preventDefault();
 
         const book = document.getElementById('book').value;
         const chapter = document.getElementById('chapter').value;
         const verse = document.getElementById('verse').value;
 
-        // Atualizar a URL com os dados inseridos
+        // Atualizar a URL com os dados inseridos sem recarregar a página
         const newUrl = `?book=${book}&chapter=${chapter}&verse=${verse}`;
         window.history.replaceState({}, '', newUrl);
 
-        // Buscar o versículo
-        searchVerse(book, chapter, verse);
+        // Chamar a função para buscar e mostrar o versículo
+        await searchVerse(book, chapter, verse);
     });
 
-    function searchVerse(book, chapter, verse) {
-        const url = `https://bible-api.com/${book}+${chapter}?translation=almeida`;
+    // Função para buscar o versículo
+    async function searchVerse(book, chapter, verse) {
+        const url = `https://bible-api.com/${book}+${chapter}${verse ? `:${verse}` : ''}?translation=almeida`;
 
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                if (data.text) {
-                    resultDiv.innerHTML = `<strong>${book} ${chapter}:${verse || 'todos'}</strong><p>${data.text}</p>`;
-                } else {
-                    resultDiv.innerHTML = "<p>Versículo não encontrado.</p>";
-                }
-            })
-            .catch(error => {
-                resultDiv.innerHTML = "<p>Erro ao buscar o versículo.</p>";
-            });
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error('Erro ao buscar o versículo');
+            }
+
+            const data = await response.json();
+            if (data.error) {
+                resultDiv.innerHTML = `<p>Erro: ${data.error}</p>`;
+            } else {
+                resultDiv.innerHTML = '';  // Limpar conteúdo anterior
+                data.verses.forEach((verseData) => {
+                    const verseElement = document.createElement('p');
+                    verseElement.textContent = `${verseData.verse} ${verseData.text}`; // Número do versículo + texto
+                    resultDiv.appendChild(verseElement);
+                });
+            }
+        } catch (error) {
+            resultDiv.innerHTML = `<p>Erro ao buscar dados da API.</p>`;
+        }
     }
 });
-
