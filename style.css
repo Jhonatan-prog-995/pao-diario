@@ -146,6 +146,26 @@ button:hover{
     color: #ffbeb0;
 }
 
+#navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+.arrow {
+    cursor: pointer;
+    font-size: 24px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    user-select: none;
+}
+.arrow:hover {
+    background-color: #e0e0e0;
+}
+
 #result{
     padding: 40px;
     font-size: 25px;
@@ -244,7 +264,7 @@ footer{
     }
 
     nav{
-        display: none;
+        /* display: none; */
     }
 
 }

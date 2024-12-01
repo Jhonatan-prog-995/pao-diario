@@ -74,80 +74,171 @@ loadFoot()
 
 
 
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById('bible-form');
     const resultDiv = document.getElementById('result');
 
-    // Verificar se há dados na URL para manter as informações no formulário
-    const urlParams = new URLSearchParams(window.location.search);
-    const savedBook = urlParams.get('book');
-    const savedChapter = urlParams.get('chapter');
-    const savedVerse = urlParams.get('verse');
+    // Botões de navegação
+    const prevButton = document.getElementById("prev");
+    const nextButton = document.getElementById("next");
 
-    if (savedBook && savedChapter) {
-        document.getElementById('book').value = savedBook;
-        document.getElementById('chapter').value = savedChapter;
-        document.getElementById('verse').value = savedVerse || '';
-        searchVerse(savedBook, savedChapter, savedVerse);
-    }
+    // Valores padrão
+    const defaultBook = "genesis";
+    const defaultChapter = "1";
+    const defaultVerse = "";
 
-    // Ouvinte do formulário para busca do versículo
+    // Recupera do localStorage ou usa valores padrão
+    const savedBook = localStorage.getItem('book') || defaultBook;
+    const savedChapter = localStorage.getItem('chapter') || defaultChapter;
+    const savedVerse = localStorage.getItem('verse') || defaultVerse;
+
+    // Variáveis para estado atual
+    let currentBook = savedBook;
+    let currentChapter = parseInt(savedChapter, 10);
+
+    // Preenche os campos do formulário
+    document.getElementById('book').value = savedBook;
+    document.getElementById('chapter').value = savedChapter;
+    document.getElementById('verse').value = savedVerse;
+
+    // Busca inicial
+    searchVerse(currentBook, currentChapter, savedVerse);
+
+    // Evento de envio do formulário
     form.addEventListener('submit', async function (e) {
         e.preventDefault();
 
-        const book = document.getElementById('book').value;
-        const chapter = document.getElementById('chapter').value;
-        const verse = document.getElementById('verse').value;
+        // Atualiza as variáveis com os valores do formulário
+        currentBook = document.getElementById('book').value.toLowerCase();
+        currentChapter = parseInt(document.getElementById('chapter').value, 10);
+        const currentVerse = document.getElementById('verse').value;
 
-        // Atualizar a URL com os dados inseridos sem recarregar a página
-        const newUrl = `?book=${book}&chapter=${chapter}&verse=${verse}`;
-        window.history.replaceState({}, '', newUrl);
+        // Salva no localStorage
+        localStorage.setItem('book', currentBook);
+        localStorage.setItem('chapter', currentChapter);
+        localStorage.setItem('verse', currentVerse);
 
-        // Chamar a função para buscar e mostrar o versículo
-        await searchVerse(book, chapter, verse);
+        // Busca os versículos
+        await searchVerse(currentBook, currentChapter, currentVerse);
     });
 
-    // Função para buscar o versículo
+    // Função para verificar se o livro tem apenas um capítulo
+    async function isSingleChapterBook(book) {
+        const url = `https://bible-api.com/${book}?translation=almeida`; // A API para buscar o livro completo
+        try {
+            const response = await fetch(url);
+            if (response.ok) {
+                const data = await response.json();
+                return data.verses.length > 0 && data.verses[0].chapter === 1; // Se o livro tem apenas 1 capítulo
+            }
+            return false;
+        } catch {
+            return false;
+        }
+    }
+
+    // Evento para botão de capítulo anterior
+    prevButton.addEventListener("click", async function () {
+        if (!(await isSingleChapterBook(currentBook))) {
+            if (await validateChapter(currentBook, currentChapter - 1)) {
+                currentChapter--;
+                document.getElementById('chapter').value = currentChapter; // Atualiza o campo de entrada
+                await searchVerse(currentBook, currentChapter);
+            }
+        }
+    });
+
+    // Evento para botão de próximo capítulo
+    nextButton.addEventListener("click", async function () {
+        if (!(await isSingleChapterBook(currentBook))) {
+            if (await validateChapter(currentBook, currentChapter + 1)) {
+                currentChapter++;
+                document.getElementById('chapter').value = currentChapter; // Atualiza o campo de entrada
+                await searchVerse(currentBook, currentChapter);
+            }
+        }
+    });
+
+    // Função para buscar e exibir todos os versículos de um capítulo
     async function searchVerse(book, chapter, verse) {
         const url = `https://bible-api.com/${book}+${chapter}${verse ? `:${verse}` : ''}?translation=almeida`;
 
         try {
             const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error('Erro ao buscar o versículo');
-            }
-
+            if (!response.ok) throw new Error('Erro ao buscar os versículos');
             const data = await response.json();
+
             if (data.error) {
                 resultDiv.innerHTML = `<p>Erro: ${data.error}</p>`;
             } else {
-                resultDiv.innerHTML = '';  // Limpar conteúdo anterior
+                resultDiv.innerHTML = '';
+                if (await isSingleChapterBook(book)) {
+                    // Se o livro tem apenas um capítulo, exibe todos os versículos
+                    data.verses.forEach((verseData) => {
+                        const verseElement = document.createElement('p');
+                        const verseNumber = document.createElement('span');
+                        verseNumber.textContent = `${verseData.verse} `;
+                        verseNumber.style.color = '#492420';
+                        verseNumber.style.fontSize = '35px';
 
-                data.verses.forEach((verseData) => {
-                    const verseElement = document.createElement('p');
-                    
-                    // Criar o span para o número do versículo
-                    const verseNumber = document.createElement('span');
-                    verseNumber.textContent = `${verseData.verse} `;
-                    verseNumber.style.color = 'red'; // Cor do número do versículo (por exemplo, vermelho)
-                    verseNumber.style.fontSize = '24px';
-                    
-                    // Criar o span para o texto do versículo
-                    const verseText = document.createElement('span');
-                    verseText.textContent = verseData.text;
-                    verseText.style.color = 'blue'; // Cor do texto do versículo (por exemplo, azul)
-                    verseText.style.fontSize = '20px'
-                    
-                    // Adicionar os spans ao elemento p
-                    verseElement.appendChild(verseNumber);
-                    verseElement.appendChild(verseText);
-                    
-                    // Adicionar o p ao resultDiv
-                    resultDiv.appendChild(verseElement);
-                });
+                        const verseText = document.createElement('span');
+                        verseText.textContent = verseData.text;
+                        verseText.style.color = '#0e0000';
+                        verseText.style.fontSize = '40px';
+
+                        verseElement.appendChild(verseNumber);
+                        verseElement.appendChild(verseText);
+                        resultDiv.appendChild(verseElement);
+                    });
+
+                    // Desabilitar navegação para livros com apenas um capítulo
+                    prevButton.disabled = true;
+                    nextButton.disabled = true;
+                } else {
+                    // Se o livro tem mais de um capítulo, exibe apenas o versículo
+                    data.verses.forEach((verseData) => {
+                        const verseElement = document.createElement('p');
+                        const verseNumber = document.createElement('span');
+                        verseNumber.textContent = `${verseData.verse} `;
+                        verseNumber.style.color = '#492420';
+                        verseNumber.style.fontSize = '35px';
+
+                        const verseText = document.createElement('span');
+                        verseText.textContent = verseData.text;
+                        verseText.style.color = '#0e0000';
+                        verseText.style.fontSize = '40px';
+
+                        verseElement.appendChild(verseNumber);
+                        verseElement.appendChild(verseText);
+                        resultDiv.appendChild(verseElement);
+                    });
+
+                    // Se o livro tem mais de um capítulo, habilite a navegação
+                    prevButton.disabled = false;
+                    nextButton.disabled = false;
+                }
             }
         } catch (error) {
             resultDiv.innerHTML = `<p>Erro ao buscar dados da API.</p>`;
         }
     }
+
+    // Função para validar se o capítulo existe
+    async function validateChapter(book, chapter) {
+        const url = `https://bible-api.com/${book}+${chapter}?translation=almeida`;
+        try {
+            const response = await fetch(url);
+            if (response.ok) {
+                const data = await response.json();
+                return !data.error;
+            } else {
+                return false;
+            }
+        } catch {
+            return false;
+        }
+    }
 });
+
