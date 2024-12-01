@@ -1,9 +1,13 @@
 const devocionalContainer = document.getElementById('devocional');
 
+ fetch('dados.json')
+.then(response => {
+    if(!response.ok) throw new error('erro ao carregar');
+    return response.json();
+})
+.then(data => {
 
-fetch('dados.json')
-.then(response => response.json())
-.then(devocional => {
+    const devocional = data.devocional;
 
     devocionalContainer.innerhtml = ' ';
 
@@ -73,7 +77,7 @@ async function loadFoot() {
 loadFoot()
 
 
-
+// ______________________________________________________
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -221,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         } catch (error) {
-            resultDiv.innerHTML = `<p>Erro ao buscar dados da API.</p>`;
+            resultDiv.innerHTML = `<p>Erro....recarregar a pagina</p>`;
         }
     }
 
@@ -241,4 +245,38 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 });
+
+
+// _________________________________________________________
+
+
+const missaoContainer = document.getElementById('missao');
+
+fetch('dados.json')
+    .then(response => {
+        if(!response.ok) throw new Error('Error...')
+        return response.json();
+    })
+
+    .then(data => {
+        const missao = data.missao;
+        missaoContainer.innerHTML = ' '
+
+        missao.forEach(missao => {
+            missaoContainer.innerHTML += ` 
+
+            <div class="devocional-item">
+            <div class="img-container">
+
+                <img src="${missao.imagem}"
+
+            </div>
+                <h2>${missao.titulo}</h2>
+                <p>${missao.body}</p>
+                
+            </dive>
+            
+            `
+        })
+})
 

@@ -24,14 +24,12 @@ header{
 
 header img{
     width: 20%;
-}
-
-img{
     border-top-left-radius: 0;     
     border-top-right-radius: 20px;    
     border-bottom-right-radius: 20px; 
     border-bottom-left-radius: 0;
 }
+
 
 nav{
     display: flex;
@@ -64,7 +62,7 @@ ul li a {
 
 ul li a:hover {
     outline: 1px solid #333333; /* Use outline no lugar de border */
-    background-color: #8B4513;
+    background-color: #86463f;
     color: #fff;
 }
 
@@ -187,6 +185,18 @@ input[type="text"] {
   -webkit-appearance: none; /* Remove qualquer aparência de setas em alguns navegadores */
 }
 
+#missao{
+    width: 100%;
+    margin: 5rem;
+    background: linear-gradient(to right, #a1887f, #795548);
+}
+.img-container img {
+    max-width: 15%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
 
 
 footer{
