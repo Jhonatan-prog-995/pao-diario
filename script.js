@@ -280,3 +280,50 @@ fetch('dados.json')
         })
 })
 
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Seleciona o botão
+    const botaoTopo = document.getElementById('voltarAoTopo');
+
+    if (botaoTopo) {
+        // Evento para mostrar o botão ao rolar
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) { // Quando o scroll passa de 200px
+                botaoTopo.style.display = 'block';
+            } else {
+                botaoTopo.style.display = 'none';
+            }
+        });
+
+        // Evento para voltar ao topo ao clicar no botão
+        botaoTopo.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth', // Animação suave
+            });
+        });
+    } else {
+        console.error('O botão #voltarAoTopo não foi encontrado no DOM.');
+    }
+});
+
+
+const buttonPath = '../botaoToppo/botao.html'; // Caminho correto para o arquivo botao.html
+
+async function loadButton() {
+    try {
+        const response = await fetch(buttonPath);  // Carrega o conteúdo de botao.html
+        if (!response.ok) throw new Error('Erro ao carregar a página');
+
+        const buttonHtml = await response.text();  // Converte o conteúdo para texto
+
+        // Coloca o conteúdo do botão na div #voltarAoTopo sem apagar o restante
+        document.getElementById('voltarAoTopo').innerHTML = buttonHtml;
+    } catch (error) {
+        console.error('Erro:', error);  // Exibe erro se ocorrer
+    }
+}
+
+loadButton();  // Chama a função ao carregar a página
+

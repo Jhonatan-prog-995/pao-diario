@@ -220,6 +220,30 @@ footer{
 .footer span{
     color:chartreuse
 }
+
+#voltarAoTopo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    font-size: 20px;
+    background-color: #340000;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    display: none; /* Escondido inicialmente */
+    z-index: 1000; /* Fica acima dos outros elementos */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+#voltarAoTopo:hover {
+    background-color: #983933;
+}
+
+
+
 /* ____________________________________________ */
 /* RESPONSIVO */
 
