@@ -1,10 +1,19 @@
 {
     "devocional":[
+
     {
-        "id": 1,
-        "titulo": "Jesus é a Esperança",
-        "body": "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna.",
-        "cap": "João: 3.16",
+        "id": 4,
+        "titulo": "Celebrai",
+        "body": "Celebrai com júbilo ao SENHOR, todas as terras.",
+        "cap": "Sl: 100. 1",
+        "img": null
+    },
+    
+    {
+        "id": 3,
+        "titulo": "Os planos de Deus",
+        "body": "Porque sou eu que conheço os planos que tenho para vocês, \"diz o Senhor\", planos de fazê-los prosperar e não de lhes causar dano, planos de dar-lhes esperança e um futuro.",
+        "cap": "Jr: 29. 11",
         "img": null
     },
 
@@ -16,39 +25,37 @@
         "img": null
     },
 
+    
     {
-        "id": 3,
-        "titulo": "Celebrai",
-        "body": "Celebrai com júbilo ao SENHOR, todas as terras.",
-        "cap": "Sl: 100. 1",
-        "img": null
-    },
-
-    {
-        "id": 4,
-        "titulo": "Os planos de Deus",
-        "body": "Porque sou eu que conheço os planos que tenho para vocês, \"diz o Senhor\", planos de fazê-los prosperar e não de lhes causar dano, planos de dar-lhes esperança e um futuro.",
-        "cap": "Jr: 29. 11",
+        "id": 1,
+        "titulo": "Jesus é a Esperança",
+        "body": "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna.",
+        "cap": "João: 3.16",
         "img": null
     }
+
+    
 
 
 ],
 
     "missao": [
-        {
-            "id": 1,
-            "titulo": "Missão na India",
-            "body": "A Índia é um extenso país do Sul da Ásia com geografia diversificada, incluindo desde os picos do Himalaia até a costa do Oceano Índico, e uma história que remonta a cinco milênios. No norte, alguns dos monumentos do império mogol são o complexo do Forte Vermelho, em Délhi, e a imponente mesquita Jama Masjid, bem como o clássico mausoléu Taj Mahal, em Agra. Os peregrinos tomam banho no Ganges, em Varanasi. Rishikesh é um centro de ioga que serve de base para trilhas no Himalaia.",
-            "imagem": "img/Flag_of_India.svg.png"
-        },
 
         {
             "id": 2,
             "titulo": "Missão no Camboja",
             "body": "O Camboja é uma nação do Sudeste Asiático cuja paisagem abrange planícies baixas, o delta do Mekong, montanhas e o litoral do Golfo da Tailândia. Phnom Penh, sua capital, abriga o Mercado Central, no estilo art déco, o brilhante Palácio Real e as exposições históricas e arqueológicas do Museu Nacional. Na região noroeste do país ficam as ruínas de Angkor Wat, um enorme complexo de templos em pedra construído durante o Império Khmer.",
             "imagem": "img/Flag_of_Cambodia.svg.png"
+        },
+        
+        {
+            "id": 1,
+            "titulo": "Missão na India",
+            "body": "A Índia é um extenso país do Sul da Ásia com geografia diversificada, incluindo desde os picos do Himalaia até a costa do Oceano Índico, e uma história que remonta a cinco milênios. No norte, alguns dos monumentos do império mogol são o complexo do Forte Vermelho, em Délhi, e a imponente mesquita Jama Masjid, bem como o clássico mausoléu Taj Mahal, em Agra. Os peregrinos tomam banho no Ganges, em Varanasi. Rishikesh é um centro de ioga que serve de base para trilhas no Himalaia.",
+            "imagem": "img/Flag_of_India.svg.png"
         }
+
+        
 
 
     ]

@@ -30,6 +30,9 @@ header img{
     border-bottom-left-radius: 0;
 }
 
+.material-symbols-outlined{
+    display: none;
+}
 
 nav{
     display: flex;
@@ -291,7 +294,7 @@ footer{
     }
 
     nav{
-        width: 68%;
+        width: 100%;
     }
     ul{
         width: 100%;
@@ -304,9 +307,40 @@ footer{
 }
 
 
-@media only screen and (max-width: 430px) {
+@media only screen and (max-width: 700px) {
+
     nav{
+
         display: none;
+    }
+
+    #burguer{
+        display: block;
+        background-color: #5f1b19;
+        color: white;
+        border-radius: 0 20px 20px 0;
+        text-align: center;
+        padding: 15px 5px;
+        cursor: pointer;
+    }
+
+    ul{
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        gap: 25px;
+    }
+
+    ul li a {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #ffede3 ;
+    }
+
+    #burguer:hover{
+        background-color: #824942;
+        color: #340000;
+
     }
 }
 

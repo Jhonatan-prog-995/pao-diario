@@ -76,6 +76,27 @@ async function loadFoot() {
 
 loadFoot()
 
+// ______________________________________________________
+
+
+const buttonPath = '../botaoToppo/botao.html'; // Caminho correto para o arquivo botao.html
+
+async function loadButton() {
+    try {
+        const response = await fetch(buttonPath);  // Carrega o conteúdo de botao.html
+        if (!response.ok) throw new Error('Erro ao carregar a página');
+
+        const buttonHtml = await response.text();  // Converte o conteúdo para texto
+
+        // Coloca o conteúdo do botão na div #voltarAoTopo sem apagar o restante
+        document.getElementById('voltarAoTopo').innerHTML = buttonHtml;
+    } catch (error) {
+        console.error('Erro:', error);  // Exibe erro se ocorrer
+    }
+}
+
+loadButton();  // Chama a função ao carregar a página
+
 
 // ______________________________________________________
 
@@ -289,7 +310,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (botaoTopo) {
         // Evento para mostrar o botão ao rolar
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 200) { // Quando o scroll passa de 200px
+            if(window.innerWidth <= 701){
+
+                // Esconde o botão se a largura da tela for menor ou igual a 700px
+                botaoTopo.style.display = 'none';
+
+            } else if (window.scrollY > 200) { // Quando o scroll passa de 200px
                 botaoTopo.style.display = 'block';
             } else {
                 botaoTopo.style.display = 'none';
@@ -309,21 +335,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-const buttonPath = '../botaoToppo/botao.html'; // Caminho correto para o arquivo botao.html
-
-async function loadButton() {
-    try {
-        const response = await fetch(buttonPath);  // Carrega o conteúdo de botao.html
-        if (!response.ok) throw new Error('Erro ao carregar a página');
-
-        const buttonHtml = await response.text();  // Converte o conteúdo para texto
-
-        // Coloca o conteúdo do botão na div #voltarAoTopo sem apagar o restante
-        document.getElementById('voltarAoTopo').innerHTML = buttonHtml;
-    } catch (error) {
-        console.error('Erro:', error);  // Exibe erro se ocorrer
+function clickMenu(){
+    if(itens.style.display == 'block'){
+        itens.style.display = 'none'
+    } else {
+        itens.style.display = 'block'
     }
 }
-
-loadButton();  // Chama a função ao carregar a página
-
