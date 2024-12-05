@@ -356,7 +356,7 @@ function clickMenu(){
 
       // Criar o elemento de imagem dinamicamente
       const img = document.createElement('img');
-      img.src = 'img/logo.jpg'; // Caminho para a imagem
+      img.src = './img/logo.jpg'; // Caminho para a imagem
       img.alt = 'Logo';
   });
 
