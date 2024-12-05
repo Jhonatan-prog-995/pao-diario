@@ -353,6 +353,11 @@ function clickMenu(){
   .then(response => response.text())
   .then(data => {
       document.getElementById('header').innerHTML = data;
+
+      // Criar o elemento de imagem dinamicamente
+      const img = document.createElement('img');
+      img.src = 'img/logo.jpg'; // Caminho para a imagem
+      img.alt = 'Logo';
   });
 
 // Carregar footer dinamicamente
