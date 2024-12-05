@@ -53,6 +53,14 @@
             "titulo": "Missão na India",
             "body": "A Índia é um extenso país do Sul da Ásia com geografia diversificada, incluindo desde os picos do Himalaia até a costa do Oceano Índico, e uma história que remonta a cinco milênios. No norte, alguns dos monumentos do império mogol são o complexo do Forte Vermelho, em Délhi, e a imponente mesquita Jama Masjid, bem como o clássico mausoléu Taj Mahal, em Agra. Os peregrinos tomam banho no Ganges, em Varanasi. Rishikesh é um centro de ioga que serve de base para trilhas no Himalaia.",
             "imagem": "img/Flag_of_India.svg.png"
+        },
+
+        {
+            "id": 3,
+            "titulo": "Missão em Gales",
+            "body": "O País de Gales é um país no sudoeste da Grã-Bretanha conhecido pelo litoral acidentado, pelos parques nacionais montanhosos, pela diferenciada língua galesa e pela cultura celta. Cardiff, a capital, é uma refinada cidade costeira com uma vida noturna animada e um castelo medieval com interiores neogóticos ornamentados. No noroeste, o Parque Nacional de Snowdonia tem lagos, acidentes geográficos glaciais, trilhas para caminhada e uma ferrovia que segue até o pico da montanha Snowdon.",
+            "imagem": "img/gales.png"
+
         }
 
         

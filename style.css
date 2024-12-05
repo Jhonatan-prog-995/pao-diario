@@ -190,7 +190,7 @@ input[type="text"] {
 
 #missao{
     width: 100%;
-    margin: 5rem;
+    margin: 0 5rem;
     background: linear-gradient(to right, #a1887f, #795548);
 }
 .img-container img {
@@ -288,6 +288,26 @@ footer{
     
 }
 
+@media only screen and (max-width: 1400px){
+    #bible-form{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        align-items: baseline
+
+    }
+
+    button {
+        font-size: 20px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        padding: 10px;
+        width: 20%;
+        border: 2px solid #c29c93;
+        border-radius: 15px;
+        cursor: pointer;
+    }
+}
+
 @media only screen and (max-width: 754px) {
     body{
         width: 100%;
@@ -342,6 +362,26 @@ footer{
         color: #340000;
 
     }
+
+    #bible-form{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        align-items: baseline
+
+    }
+
+    button {
+        font-size: 20px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        padding: 10px;
+        width: 40%;
+        border: 2px solid #c29c93;
+        border-radius: 15px;
+        cursor: pointer;
+    }
+
+
 }
 
 
