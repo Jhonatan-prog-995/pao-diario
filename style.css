@@ -334,6 +334,10 @@ footer{
         display: none;
     }
 
+    .cabecalho{
+        margin: 0;
+    }
+
     #burguer{
         display: block;
         background-color: #5f1b19;
@@ -344,6 +348,15 @@ footer{
         cursor: pointer;
     }
 
+    .biblia{
+        margin: 0;
+    }
+
+    #missao{
+        margin: 0;
+
+    }
+    
     ul{
         display: flex;
         flex-direction: column;
@@ -379,6 +392,10 @@ footer{
         border: 2px solid #c29c93;
         border-radius: 15px;
         cursor: pointer;
+    }
+
+    #devocional{
+        margin: 0;
     }
 
 
