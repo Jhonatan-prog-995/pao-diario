@@ -342,3 +342,29 @@ function clickMenu(){
         itens.style.display = 'block'
     }
 }
+
+
+
+// função para carregar os elementos no body
+
+
+  // Carregar header dinamicamente
+  fetch('./header/header.html')
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById('header').innerHTML = data;
+  });
+
+// Carregar footer dinamicamente
+fetch('./footer/footer.html')
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById('footer').innerHTML = data;
+  });
+
+// Botão de voltar ao topo
+fetch('./botaoToppo/botao.html')
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById('voltarAoTopo').innerHTML = data;
+  });
